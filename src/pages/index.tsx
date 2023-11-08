@@ -1,5 +1,5 @@
-import * as React from "react";
-import type { HeadFC, PageProps } from "gatsby";
+import * as React from 'react';
+import type { HeadFC, PageProps } from 'gatsby';
 import {
   Box,
   Center,
@@ -16,9 +16,9 @@ import {
   Link as ChakraLink,
   Divider,
   Flex,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
-const $lineHeight = "1.4375rem";
+const $lineHeight = '1.4375rem';
 
 const PurpleCode = (props: CodeProps) => (
   <Code colorScheme="purple" {...props} />
@@ -38,13 +38,13 @@ const IndexPage: React.FC<PageProps> = () => {
           >
             <Highlight
               query="With Speed"
-              styles={{ color: "purple.600", _dark: { color: "purple.400" } }}
+              styles={{ color: 'purple.600', _dark: { color: 'purple.400' } }}
             >
               Get Started Using Gatsby With Speed
             </Highlight>
           </Heading>
           <Text fontSize="2xl" mb={$lineHeight}>
-            Thank you for using the Gatsby Starter for{" "}
+            Thank you for using the Gatsby Starter for{' '}
             <PurpleCode fontSize="initial">Chakra UI</PurpleCode>!
           </Text>
           <List textAlign="start" spacing={4}>
@@ -57,19 +57,19 @@ const IndexPage: React.FC<PageProps> = () => {
             </ListItem>
           </List>
           <Text>
-            To generate the theming token types, run{" "}
-            <PurpleCode>npm run theme</PurpleCode> or{" "}
+            To generate the theming token types, run{' '}
+            <PurpleCode>npm run theme</PurpleCode> or{' '}
             <PurpleCode>npm run theme:watch</PurpleCode>
           </Text>
           <Text>
-            Head over to{" "}
+            Head over to{' '}
             <ChakraLink
               href="https://chakra-ui.com"
               color="blue.500"
               fontWeight="bold"
             >
               ChakraUI.com
-            </ChakraLink>{" "}
+            </ChakraLink>{' '}
             to get started using the components and creating your theme!
           </Text>
           <Divider />

@@ -1,18 +1,35 @@
-import type { GatsbyConfig } from "gatsby";
+import type { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
   siteMetadata: {
     siteUrl: `https://www.yourdomain.tld`,
   },
-  // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
-  // If you use VSCode you can also use the GraphQL plugin
-  // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
+    `gatsby-plugin-sass`,
     {
-      // https://chakra-ui.com/getting-started/gatsby-guide
-      resolve: "@chakra-ui/gatsby-plugin",
+      resolve: 'gatsby-plugin-typescript',
+      options: {
+        isTSX: true,
+        allExtensions: true,
+      },
+    },
+    {
+      resolve: '@chakra-ui/gatsby-plugin',
       options: {},
+    },
+    {
+      resolve: 'gatsby-plugin-alias-imports',
+      options: {
+        alias: {
+          '@components': 'src/components',
+          '@layout': 'src/layout',
+          '@module': 'src/module',
+          '@pages': 'src/pages',
+          '@types': 'src/types',
+        },
+        extensions: ['js', 'jsx', 'ts', 'tsx'],
+      },
     },
   ],
 };
