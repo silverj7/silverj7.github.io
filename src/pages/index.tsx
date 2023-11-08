@@ -19,7 +19,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <Flex gap={$lineHeight} flexDir="column">
           <Heading
             as="h1"
-            size="4xl"
+            size="2xl"
             maxW="16ch"
             lineHeight={calc($lineHeight).multiply(4).toString()}
           >
