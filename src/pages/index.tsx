@@ -20,7 +20,6 @@ const IndexPage: React.FC<PageProps> = () => {
           <Heading
             as="h1"
             size="2xl"
-            maxW="16ch"
             lineHeight={calc($lineHeight).multiply(4).toString()}
           >
             <Highlight
