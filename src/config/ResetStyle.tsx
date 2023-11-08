@@ -6,8 +6,16 @@ const defaultStyle = css`
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: Netflix Sans, Ubuntu, -apple-system, BlinkMacSystemFont,
-      Segoe UI, Poppins, Roboto, Helvetica Neue, sans-serif;
+    font-family:
+      Netflix Sans,
+      Ubuntu,
+      -apple-system,
+      BlinkMacSystemFont,
+      Segoe UI,
+      Poppins,
+      Roboto,
+      Helvetica Neue,
+      sans-serif;
   }
 
   html,
@@ -27,29 +35,6 @@ const defaultStyle = css`
     color: inherit;
     text-decoration: none;
     cursor: pointer;
-  }
-
-  blockquote:before,
-  blockquote:after,
-  q:before,
-  q:after {
-    content: '';
-    content: none;
-  }
-
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-
-  .blind {
-    overflow: hidden;
-    position: absolute;
-    left: -999px;
-    width: 1px;
-    height: 1px;
-    white-space: nowrap;
-    line-height: 999px;
   }
 
   @media (max-width: 768px) {
