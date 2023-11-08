@@ -5,27 +5,14 @@ import {
   Center,
   Heading,
   Highlight,
-  List,
-  ListItem,
-  Text,
-  useColorMode,
-  Code,
-  Button,
   calc,
-  CodeProps,
   Link as ChakraLink,
-  Divider,
   Flex,
 } from '@chakra-ui/react';
 
 const $lineHeight = '1.4375rem';
 
-const PurpleCode = (props: CodeProps) => (
-  <Code colorScheme="purple" {...props} />
-);
-
 const IndexPage: React.FC<PageProps> = () => {
-  const { toggleColorMode } = useColorMode();
   return (
     <Box as="main">
       <Center height="100vh" textAlign="center">
@@ -40,46 +27,9 @@ const IndexPage: React.FC<PageProps> = () => {
               query="With Speed"
               styles={{ color: 'purple.600', _dark: { color: 'purple.400' } }}
             >
-              Get Started Using Gatsby With Speed
+              Welcome to SEJ's portfolio.
             </Highlight>
           </Heading>
-          <Text fontSize="2xl" mb={$lineHeight}>
-            Thank you for using the Gatsby Starter for{' '}
-            <PurpleCode fontSize="initial">Chakra UI</PurpleCode>!
-          </Text>
-          <List textAlign="start" spacing={4}>
-            <ListItem>
-              ⚡Create accessible Gatsby apps with speed using Chakra UI
-            </ListItem>
-            <ListItem>
-              ⚡Generate types from your custom component with the Chakra CLI
-              for IDE autocompletion
-            </ListItem>
-          </List>
-          <Text>
-            To generate the theming token types, run{' '}
-            <PurpleCode>npm run theme</PurpleCode> or{' '}
-            <PurpleCode>npm run theme:watch</PurpleCode>
-          </Text>
-          <Text>
-            Head over to{' '}
-            <ChakraLink
-              href="https://chakra-ui.com"
-              color="blue.500"
-              fontWeight="bold"
-            >
-              ChakraUI.com
-            </ChakraLink>{' '}
-            to get started using the components and creating your theme!
-          </Text>
-          <Divider />
-          <Button
-            onClick={toggleColorMode}
-            colorScheme="blue"
-            alignSelf="center"
-          >
-            Toggle Color Mode
-          </Button>
         </Flex>
       </Center>
     </Box>
