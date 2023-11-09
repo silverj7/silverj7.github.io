@@ -20,9 +20,8 @@
     "moduleResolution": "node",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true /* Enable all strict type-checking options. */,
-    "allowJs": true,
-    "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    "strict": true,
+    "skipLibCheck": true 
   },
   "include": [
     "./src/**/*",
