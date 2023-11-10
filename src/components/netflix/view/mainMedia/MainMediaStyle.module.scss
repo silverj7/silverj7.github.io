@@ -1,0 +1,201 @@
+@import '../../../../config/_mixin.module.scss';
+
+.wrapper {
+  position: relative;
+  top: 0;
+  left: 0;
+  padding-bottom: 40%;
+  color: #fff;
+  word-break: keep-all;
+  z-index: 9;
+}
+
+// 배경 이미지 영역
+.mainImgWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 56vw;
+
+  .mainImg {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+}
+
+// 제목, 부제목, 설명 영역
+.mainDescWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  z-index: 9;
+
+  .mainDescInner {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: 0;
+    bottom: 30%;
+    left: 60px;
+    width: 50%;
+    row-gap: 10px;
+
+    @media (max-width: 768px) {
+      left: 4%;
+      row-gap: 5px;
+      justify-content: inherit;
+    }
+
+    .mainDescBox {
+      width: 100%;
+      height: 100%;
+    }
+
+    // 제목
+    .mainTitWrap {
+      img {
+        height: 13.2vw;
+        max-width: 100%;
+      }
+    }
+
+    // 부제목
+    .mainSubTitWrap {
+      display: flex;
+      align-items: center;
+      column-gap: 5px;
+
+      .mainSubTit {
+        font-size: 1.7vw;
+        line-height: 1.7vw;
+
+        @media (max-width: 768px) {
+          font-size: 2vw;
+          line-height: 1.5vw;
+        }
+      }
+
+      // 부제목 - top10 img
+      .mainTop10Icon {
+        width: 33px;
+
+        @media (max-width: 768px) {
+          width: 4vw;
+        }
+      }
+    }
+
+    // 설명
+    .mainDescWrap {
+      font-size: 1.2vw;
+      line-height: 1.5vw;
+
+      @media (max-width: 768px) {
+        margin-top: 5px;
+      }
+    }
+  }
+
+  // 버튼 영역
+  .playDescWrap {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+
+    @media (max-width: 768px) {
+      column-gap: 5px;
+    }
+  }
+
+  .playBtn,
+  .descBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 10px;
+    padding: 10px 15px;
+    font-size: 16px;
+    line-height: 1.6rem;
+    border: none;
+    border-radius: 6px;
+
+    @media (max-width: 768px) {
+      column-gap: 5px;
+      font-size: 1.6vw;
+      line-height: 0;
+      padding: 5px;
+      border-radius: 3px;
+    }
+  }
+
+  .playBtn {
+    color: #000;
+    background-color: #fff;
+  }
+
+  .descBtn {
+    color: #fff;
+    background-color: rgba(109, 109, 110, 0.7);
+  }
+
+  // 버튼이미지
+  .playBtnImg,
+  .descBtnImg {
+    width: 1.5rem;
+
+    @media (max-width: 768px) {
+      width: 2.5vw;
+    }
+  }
+}
+
+.mainMediaDim {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 26.09%;
+  width: 100%;
+  height: 56vw;
+  transition: opacity 0.5s;
+  background: linear-gradient(77deg, rgba(0, 0, 0, 0.6), transparent 85%);
+  opacity: 1;
+  z-index: 8;
+}
+
+// dim 처리
+.mainDim {
+  position: absolute;
+  top: auto;
+  bottom: -43%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 15vw;
+  background-color: transparent;
+  background-image: linear-gradient(
+    180deg,
+    hsla(0, 0%, 8%, 0) 0,
+    hsla(0, 0%, 8%, 0.15) 15%,
+    hsla(0, 0%, 8%, 0.35) 29%,
+    hsla(0, 0%, 8%, 0.58) 44%,
+    #141414 68%,
+    #141414
+  );
+  background-position: 0 top;
+  background-repeat: repeat-x;
+  background-size: 100% 100%;
+  opacity: 1;
+  z-index: 8;
+}

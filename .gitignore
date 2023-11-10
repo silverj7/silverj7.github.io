@@ -1,0 +1,10 @@
+node_modules/
+node_modules
+.cache/
+public/
+public/~partytown
+public/page-data
+public/_gatsby
+public/static
+public/images/temp
+src/gatsby-types.d.ts
