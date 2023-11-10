@@ -8,3 +8,5 @@ public/_gatsby
 public/static
 public/images/temp
 src/gatsby-types.d.ts
+node_modules
+README.md
