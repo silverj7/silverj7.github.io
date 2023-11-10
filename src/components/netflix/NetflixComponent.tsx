@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { CarouselMenu1 } from './dummy/dummy';
 import * as NetflixStyle from './NetflixStyle.module.scss';
 import CarouselComponent from './view/carousel/CarouselComponent';
 import GnbComponent from './view/gnbmenu/GnbComponent';
 import MainMediaComponent from './view/mainMedia/MainMediaComponent';
 
 type Props = {};
+
+export interface CarouselType {
+  title: string;
+  imgSrc: string;
+}
 
 const NetFlixComponent = (props: Props) => {
   // scroll 감지 state (GnbComponent용)
@@ -34,10 +40,10 @@ const NetFlixComponent = (props: Props) => {
     <div className={NetflixStyle.wrapper}>
       <GnbComponent isScroll={isScroll} />
       <MainMediaComponent />
-      <CarouselComponent title="한국이 만든 콘텐츠" />
-      <CarouselComponent title="지금 뜨는 콘텐츠" />
-      <CarouselComponent title="해외 영화" />
-      <CarouselComponent title="애니" />
+      <CarouselComponent title="한국이 만든 콘텐츠" data={CarouselMenu1} />
+      <CarouselComponent title="지금 뜨는 콘텐츠" data={CarouselMenu1} />
+      <CarouselComponent title="해외 영화" data={CarouselMenu1} />
+      <CarouselComponent title="애니" data={CarouselMenu1} />
     </div>
   );
 };
