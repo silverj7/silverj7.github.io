@@ -2,7 +2,12 @@ import type { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    siteUrl: `https://www.yourdomain.tld`,
+    siteMetadata: {
+      title: `SEJ's portfolio`,
+      author: `SEJ`,
+      description: `personal portfolio`,
+      siteUrl: `https://silverj7.github.io`,
+    },
   },
   graphqlTypegen: true,
   plugins: [
