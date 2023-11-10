@@ -92,7 +92,7 @@ const CarouselComponent = (props: CarouselProp) => {
           className={CarouselStyle.swiperWrapper}
           rewind={true}
           spaceBetween={4}
-          slidesPerView={2.15}
+          slidesPerView={2}
           slidesPerGroup={6}
           speed={1500}
           allowTouchMove={false}
@@ -106,19 +106,19 @@ const CarouselComponent = (props: CarouselProp) => {
           breakpoints={{
             1400: {
               spaceBetween: 8,
-              slidesPerView: 6.25,
+              slidesPerView: 6,
             },
             1100: {
               spaceBetween: 6,
-              slidesPerView: 5.25,
+              slidesPerView: 5,
             },
             800: {
               spaceBetween: 4,
-              slidesPerView: 4.2,
+              slidesPerView: 4,
             },
             500: {
               spaceBetween: 4,
-              slidesPerView: 3.2,
+              slidesPerView: 3,
             },
           }}
         >
