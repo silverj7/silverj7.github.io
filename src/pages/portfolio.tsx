@@ -3,7 +3,7 @@ import { PageProps } from 'gatsby';
 import NetFlixComponent from '@components/netflix/NetflixComponent';
 import ResetStyle from '../config/ResetStyle';
 
-const Netflix: React.FC<PageProps> = () => {
+const Portfolio: React.FC<PageProps> = () => {
   return (
     <>
       <ResetStyle />
@@ -12,4 +12,4 @@ const Netflix: React.FC<PageProps> = () => {
   );
 };
 
-export default Netflix;
+export default Portfolio;
