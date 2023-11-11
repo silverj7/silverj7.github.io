@@ -1,3 +1,3 @@
-import NetFlixComponent from 'components/netflix/NetflixComponent';
+import NetFlixComponent from './NetflixComponent';
 
 export { NetFlixComponent };

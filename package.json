@@ -2,6 +2,7 @@
   "name": "gatsby-starter-chakra-ui-type-script",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://silverj7.github.io",
   "description": "gatsby-starter-chakra-ui-type-script",
   "author": "tylerapfledderer",
   "keywords": [
@@ -9,7 +10,7 @@
   ],
   "scripts": {
     "develop": "gatsby develop",
-    "deploy": "gatsby build && gh-pages -d public -b main",
+    "deploy": "gatsby build && gh-pages -d public -b deploy",
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
