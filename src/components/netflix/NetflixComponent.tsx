@@ -4,9 +4,11 @@ import {
   CarouselMenu2,
   CarouselMenu3,
   CarouselMenu4,
+  CarouselRankMenu,
 } from './dummy/dummy';
 import * as NetflixStyle from './NetflixStyle.module.scss';
 import CarouselComponent from './view/carousel/CarouselComponent';
+import CarouselRankComponent from './view/carousel/CarouselRankComponent';
 import GnbComponent from './view/gnbmenu/GnbComponent';
 import MainMediaComponent from './view/mainMedia/MainMediaComponent';
 
@@ -15,6 +17,13 @@ type Props = {};
 export interface CarouselType {
   title: string;
   imgSrc: string;
+}
+
+export interface CarouselRankType {
+  title: string;
+  imgSrc: string;
+  rankIconid: string;
+  rankIconPath: string;
 }
 
 const NetFlixComponent = (props: Props) => {
@@ -48,6 +57,7 @@ const NetFlixComponent = (props: Props) => {
       <CarouselComponent title="한국이 만든 콘텐츠" data={CarouselMenu1} />
       <CarouselComponent title="지금 뜨는 콘텐츠" data={CarouselMenu2} />
       <CarouselComponent title="해외 영화" data={CarouselMenu3} />
+      <CarouselRankComponent title="해외 영화" data={CarouselRankMenu} />
       <CarouselComponent title="다시보기 추천 콘텐츠" data={CarouselMenu4} />
     </div>
   );

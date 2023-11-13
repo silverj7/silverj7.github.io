@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import * as CarouselStyle from './CarouselStyle.module.scss';
 import CarouselTitleComponent from './CarouselTitleComponent';
 import { Navigation } from 'swiper/modules';
@@ -14,10 +14,12 @@ interface CarouselProp {
   data: CarouselType[];
 }
 
-const CarouselComponent = (props: CarouselProp) => {
+const CarouselRankComponent = (props: CarouselProp) => {
   const { title, data } = props;
+
   const navigationPrevRef = useRef<HTMLDivElement>(null);
   const navigationNextRef = useRef(null);
+
   const [realIndex, setRealIndex] = useState(0);
 
   useEffect(() => {
@@ -100,11 +102,27 @@ const CarouselComponent = (props: CarouselProp) => {
           {data.map((item: any, index: number) => {
             return (
               <SwiperSlide>
-                <img
-                  key={`itemBox` + index}
-                  src={item.imgSrc}
-                  alt={item.title}
-                />
+                <div className={CarouselStyle.rankItem}>
+                  <svg
+                    width="50%"
+                    height="100%"
+                    viewBox="-20 0 70 154"
+                    className={CarouselStyle.rankIcon}
+                  >
+                    <path
+                      stroke="#595959"
+                      stroke-linejoin="square"
+                      stroke-width="4"
+                      d={item.rankIconPath}
+                      className={CarouselStyle.rankIconPath}
+                    ></path>
+                  </svg>
+                  <img
+                    key={`itemBox` + index}
+                    src={item.imgSrc}
+                    alt={item.title}
+                  />
+                </div>
               </SwiperSlide>
             );
           })}
@@ -114,4 +132,4 @@ const CarouselComponent = (props: CarouselProp) => {
   );
 };
 
-export default CarouselComponent;
+export default CarouselRankComponent;

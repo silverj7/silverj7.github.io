@@ -35,6 +35,27 @@
       }
     }
 
+    .rankItem {
+      position: relative;
+      padding: 35.714285714% 0;
+      width: 100%;
+
+      .rankIcon {
+        position: absolute;
+        width: 50%;
+        top: 0;
+        left: 0;
+      }
+
+      > img {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 50%;
+      }
+    }
+
     img {
       max-width: 100%;
       border-radius: 5px;
