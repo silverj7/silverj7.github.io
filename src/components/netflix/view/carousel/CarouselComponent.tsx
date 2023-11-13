@@ -46,10 +46,7 @@ const CarouselComponent = (props: CarouselProp) => {
           onActiveIndexChange={(swiper: any) => {
             setRealIndex(swiper.realIndex);
           }}
-          navigation={{
-            prevEl: navigationPrevRef.current,
-            nextEl: navigationNextRef.current,
-          }}
+          navigation={{ prevEl: '#prevBtn', nextEl: '#nextBtn' }}
           breakpoints={{
             1400: {
               spaceBetween: 8,
@@ -70,7 +67,11 @@ const CarouselComponent = (props: CarouselProp) => {
           }}
         >
           <>
-            <div ref={navigationPrevRef} className={CarouselStyle.arrowLeft}>
+            <div
+              id="prevBtn"
+              ref={navigationPrevRef}
+              className={CarouselStyle.arrowLeft}
+            >
               <FaChevronLeft
                 className={CarouselStyle.arrowLeftImg}
                 style={{
@@ -81,7 +82,11 @@ const CarouselComponent = (props: CarouselProp) => {
                 }}
               />
             </div>
-            <div ref={navigationNextRef} className={CarouselStyle.arrowRight}>
+            <div
+              id="nextBtn"
+              ref={navigationNextRef}
+              className={CarouselStyle.arrowRight}
+            >
               <FaChevronRight
                 className={CarouselStyle.arrowRightImg}
                 style={{

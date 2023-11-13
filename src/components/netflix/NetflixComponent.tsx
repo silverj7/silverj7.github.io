@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { CarouselMenu1 } from './dummy/dummy';
+import {
+  CarouselMenu1,
+  CarouselMenu2,
+  CarouselMenu3,
+  CarouselMenu4,
+} from './dummy/dummy';
 import * as NetflixStyle from './NetflixStyle.module.scss';
 import CarouselComponent from './view/carousel/CarouselComponent';
 import GnbComponent from './view/gnbmenu/GnbComponent';
@@ -41,9 +46,9 @@ const NetFlixComponent = (props: Props) => {
       <GnbComponent isScroll={isScroll} />
       <MainMediaComponent />
       <CarouselComponent title="한국이 만든 콘텐츠" data={CarouselMenu1} />
-      <CarouselComponent title="지금 뜨는 콘텐츠" data={CarouselMenu1} />
-      <CarouselComponent title="해외 영화" data={CarouselMenu1} />
-      <CarouselComponent title="애니" data={CarouselMenu1} />
+      <CarouselComponent title="지금 뜨는 콘텐츠" data={CarouselMenu2} />
+      <CarouselComponent title="해외 영화" data={CarouselMenu3} />
+      <CarouselComponent title="다시보기 추천 콘텐츠" data={CarouselMenu4} />
     </div>
   );
 };

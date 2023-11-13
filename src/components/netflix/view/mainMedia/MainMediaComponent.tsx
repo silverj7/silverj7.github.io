@@ -60,9 +60,8 @@ const MainMediaComponent = (props: Props) => {
 
           {/* 설명 */}
           <div className={MainMediaStyle.mainDescWrap}>
-            두 명의 멍청한 사교계 여성들을 경호하는 임무를 받은 두 흑인 FBI
-            요원은 납치범들을 저지하기 위해 파티를 좋아하는 백인 여성들로
-            변장한다.
+            팬데믹을 배경으로 펼쳐지는 옴니버스 시리즈로, 로맨스와 실연의 상처를
+            <br /> 다룬 10편의 사랑 이야기.
           </div>
 
           {/* 버튼 영역 */}
