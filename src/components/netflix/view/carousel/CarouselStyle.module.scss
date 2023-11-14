@@ -20,6 +20,32 @@
     }
   }
 
+  .modal-wrapper {
+    .modalWrap {
+      position: absolute;
+      overflow: hidden;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 30vw;
+      height: 100%;
+      z-index: 10;
+
+      .modalimgwrap {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding-top: 56.3925%;
+
+        .modalImg {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+
   .itemInner {
     height: 100%;
 
@@ -57,6 +83,7 @@
     }
 
     img {
+      position: relative;
       max-width: 100%;
       border-radius: 5px;
 
@@ -122,26 +149,6 @@
 
       @media (max-width: 500px) {
         border-radius: 0;
-      }
-    }
-  }
-
-  .modalWrap {
-    position: relative;
-    overflow: hidden;
-    width: 30vw;
-    height: 100%;
-
-    .modalImgWrap {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      padding-top: 56.3925%;
-
-      .modalImg {
-        position: absolute;
-        top: 0;
-        left: 0;
       }
     }
   }

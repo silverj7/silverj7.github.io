@@ -31,6 +31,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
+    "react-modal": "^3.16.1",
     "swiper": "^11.0.3"
   },
   "devDependencies": {
@@ -38,6 +39,7 @@
     "@types/node": "^20.0.0",
     "@types/react": "^18.2.36",
     "@types/react-dom": "^18.2.14",
+    "@types/react-modal": "^3.16.3",
     "gatsby-plugin-alias-imports": "^1.0.5",
     "gh-pages": "^6.0.0",
     "typescript": "^5.2.2"
