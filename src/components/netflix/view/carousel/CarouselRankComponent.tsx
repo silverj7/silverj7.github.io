@@ -7,11 +7,11 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { CarouselType } from '../../NetflixComponent';
+import { CarouselRankType } from '../../NetflixComponent';
 
 interface CarouselProp {
   title: string; // Carousel 재사용을 위한 title props
-  data: CarouselType[];
+  data: CarouselRankType[];
 }
 
 const CarouselRankComponent = (props: CarouselProp) => {

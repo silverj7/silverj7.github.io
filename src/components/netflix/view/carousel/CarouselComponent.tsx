@@ -1,9 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import * as CarouselStyle from './CarouselStyle.module.scss';
 import CarouselTitleComponent from './CarouselTitleComponent';
 import { Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { BsHandThumbsUp, BsPlusLg } from 'react-icons/bs';
+import { ImPlay3 } from 'react-icons/im';
+import { MdKeyboardArrowDown } from 'react-icons/md';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -18,7 +21,14 @@ const CarouselComponent = (props: CarouselProp) => {
   const { title, data } = props;
   const navigationPrevRef = useRef<HTMLDivElement>(null);
   const navigationNextRef = useRef(null);
+  const imgRef = useRef<HTMLImageElement[]>([]);
+
   const [realIndex, setRealIndex] = useState(0);
+  const [active, setActive] = useState(false);
+  const [remove, setRemove] = useState(false);
+
+  const [isX, setIsX] = useState(0);
+  const [isY, setIsY] = useState(0);
 
   useEffect(() => {
     if (!navigationPrevRef.current) return;
@@ -29,6 +39,37 @@ const CarouselComponent = (props: CarouselProp) => {
       navigationPrevRef.current.style.display = 'flex';
     }
   }, [realIndex]);
+
+  // 좌표
+  const getPosition = (index: number) => {
+    if (imgRef.current) {
+      const x = imgRef.current[index].getBoundingClientRect().left / 2;
+      setIsX(x);
+
+      const y = imgRef.current[index].getBoundingClientRect().top / 2;
+      setIsY(y);
+
+      console.log(x, '<<<< x', y, '<<<< y');
+    }
+  };
+
+  // 마우스이벤트
+  const onMouseEnter = (item: CarouselType, index: number) => {
+    // const currnetRef = item.filter((c: any) => c.getId() !== item.id);
+
+    getPosition(index);
+
+    setTimeout(() => {
+      setActive(true);
+      setRemove(false);
+    }, 1000);
+  };
+
+  const onMouseLeave = (c: CarouselType, index: number) => {
+    setTimeout(() => {
+      setActive(false);
+    }, 1000);
+  };
 
   return (
     <div className={CarouselStyle.itemWrapper}>
@@ -97,14 +138,134 @@ const CarouselComponent = (props: CarouselProp) => {
               />
             </div>
           </>
-          {data.map((item: any, index: number) => {
+
+          {data.map((item: CarouselType, index: number) => {
             return (
-              <SwiperSlide>
-                <img
-                  key={`itemBox` + index}
-                  src={item.imgSrc}
-                  alt={item.title}
-                />
+              <SwiperSlide
+                onMouseEnter={() => onMouseEnter(item, index)}
+                onMouseLeave={() => onMouseLeave(item, index)}
+                style={{
+                  cursor: 'pointer',
+                }}
+              >
+                <div>
+                  <img
+                    ref={(itself: any) => (imgRef.current[index] = itself)}
+                    id="modalImg"
+                    key={`itemBox` + index}
+                    src={item.imgSrc}
+                    alt={item.title}
+                  />
+                  {active && (
+                    <div className={CarouselStyle.modalWrap} style={{}}>
+                      <div className={CarouselStyle.modalImgWrap}>
+                        <img
+                          className={CarouselStyle.modalImg}
+                          src="/images/netflix/carousel/scale_img04.jpg"
+                          alt="scale"
+                        />
+                      </div>
+                      <div
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <div
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '42px',
+                            height: '42px',
+                            margin: '0 auto',
+                            padding: '0.3rem 0.2rem 0.3rem 0.4rem',
+                            color: '#000',
+                            backgroundColor: '#fff',
+                            borderRadius: '50%',
+                          }}
+                        >
+                          <ImPlay3
+                            style={{
+                              width: '30px',
+                              height: '30px',
+                              margin: '0 auto',
+                              color: '#000',
+                            }}
+                          />
+                        </div>
+                        <div
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '42px',
+                            height: '42px',
+                            margin: '0 auto',
+                            padding: '0.3rem',
+                            border: 'solid 2px #ddd',
+                            borderRadius: '50%',
+                          }}
+                        >
+                          <BsPlusLg
+                            style={{
+                              width: '26px',
+                              height: '26px',
+                              margin: '0 auto',
+                              color: '#fff',
+                            }}
+                          />
+                        </div>
+                        <div
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '42px',
+                            height: '42px',
+                            margin: '0 auto',
+                            padding: '0.3rem',
+                            border: 'solid 2px #ddd',
+                            borderRadius: '50%',
+                          }}
+                        >
+                          <BsHandThumbsUp
+                            style={{
+                              width: '26px',
+                              height: '26px',
+                              margin: '0 auto',
+                              color: '#fff',
+                            }}
+                          />
+                        </div>
+                        <div
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '42px',
+                            height: '42px',
+                            margin: '0 auto',
+                            padding: '0.3rem',
+                            color: '#fff',
+                            border: 'solid 2px #ddd',
+                            borderRadius: '50%',
+                          }}
+                        >
+                          <MdKeyboardArrowDown
+                            style={{
+                              width: '30px',
+                              height: '30px',
+                              margin: '0 auto',
+                              color: '#fff',
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
               </SwiperSlide>
             );
           })}

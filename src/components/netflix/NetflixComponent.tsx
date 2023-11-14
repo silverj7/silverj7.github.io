@@ -15,6 +15,7 @@ import MainMediaComponent from './view/mainMedia/MainMediaComponent';
 type Props = {};
 
 export interface CarouselType {
+  id: number;
   title: string;
   imgSrc: string;
 }

@@ -125,4 +125,24 @@
       }
     }
   }
+
+  .modalWrap {
+    position: relative;
+    overflow: hidden;
+    width: 30vw;
+    height: 100%;
+
+    .modalImgWrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding-top: 56.3925%;
+
+      .modalImg {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
 }
