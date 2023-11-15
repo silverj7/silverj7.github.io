@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import * as CarouselStyle from './CarouselStyle.module.scss';
 import CarouselTitleComponent from './CarouselTitleComponent';
 import { Navigation } from 'swiper/modules';
@@ -27,7 +27,8 @@ const CarouselComponent = (props: CarouselProp) => {
   const [realIndex, setRealIndex] = useState(0);
   const [mouseEnterIndex, setMouseEnterIndex] = useState(0);
 
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+  // const [modalIndex, setModalIndex] = useState(0);
+  // const [modalIsOpen, setModalIsOpen] = useState(false);
   const [active, setActive] = useState(false);
   const [remove, setRemove] = useState(false);
 
@@ -69,16 +70,43 @@ const CarouselComponent = (props: CarouselProp) => {
     setTimeout(() => {
       setActive(false);
     }, 1000);
-
-    closeModal();
   };
 
-  const openModal = () => {
-    setModalIsOpen(true);
-  };
+  // const openModal = (id: number) => {
+  //   setModalIndex(id);
 
-  const closeModal = () => {
-    setModalIsOpen(false);
+  //   if (data.filter((item: CarouselType) => item.id === id).length > 0) {
+  //     setModalIsOpen(true);
+  //   } else setModalIsOpen(false);
+  // };
+
+  // const closeModal = () => {
+  //   setModalIsOpen(false);
+  // };
+
+  const customModalStyles: ReactModal.Styles = {
+    overlay: {
+      backgroundColor: ' rgba(0, 0, 0, 0)',
+      width: '30vw',
+      height: '100%',
+      zIndex: '100',
+      position: 'fixed',
+      top: '0',
+      left: '0',
+    },
+    content: {
+      width: '30vw',
+      zIndex: '100',
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      borderRadius: '10px',
+      boxShadow: '2px 2px 2px rgba(0, 0, 0, 0.25)',
+      backgroundColor: 'white',
+      justifyContent: 'center',
+      overflow: 'auto',
+    },
   };
 
   return (
@@ -150,10 +178,23 @@ const CarouselComponent = (props: CarouselProp) => {
           </>
 
           {data.map((item: CarouselType, index: number) => {
+            const [modalIsOpen, setModalIsOpen] = useState(false);
+
             return (
               <SwiperSlide
+                id={`${index}`}
                 style={{
                   cursor: 'pointer',
+                }}
+                onMouseOver={() => {
+                  // openModal(item.id);
+                  setModalIsOpen(true);
+                }}
+                onMouseLeave={(e: any) => {
+                  setModalIsOpen(false);
+                  // if (Number(e.target.id) === item.id) {
+                  //   closeModal();
+                  // }
                 }}
               >
                 <div>
@@ -168,131 +209,124 @@ const CarouselComponent = (props: CarouselProp) => {
                     src={item.imgSrc}
                     alt={item.title}
                   />
+
+                  <Modal isOpen={modalIsOpen} style={customModalStyles}>
+                    <div className={CarouselStyle.modalWrap}>
+                      <div className={CarouselStyle.modalImgWrap}>
+                        <img
+                          className={CarouselStyle.modalImg}
+                          src="/images/netflix/carousel/scale_img04.jpg"
+                          alt="scale"
+                        />
+                      </div>
+                      <div
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                        }}
+                      >
+                        <div
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '42px',
+                            height: '42px',
+                            margin: '0 auto',
+                            padding: '0.3rem 0.2rem 0.3rem 0.4rem',
+                            color: '#000',
+                            backgroundColor: '#fff',
+                            borderRadius: '50%',
+                          }}
+                        >
+                          <ImPlay3
+                            style={{
+                              width: '30px',
+                              height: '30px',
+                              margin: '0 auto',
+                              color: '#000',
+                            }}
+                          />
+                        </div>
+                        <div
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '42px',
+                            height: '42px',
+                            margin: '0 auto',
+                            padding: '0.3rem',
+                            border: 'solid 2px #ddd',
+                            borderRadius: '50%',
+                          }}
+                        >
+                          <BsPlusLg
+                            style={{
+                              width: '26px',
+                              height: '26px',
+                              margin: '0 auto',
+                              color: '#fff',
+                            }}
+                          />
+                        </div>
+                        <div
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '42px',
+                            height: '42px',
+                            margin: '0 auto',
+                            padding: '0.3rem',
+                            border: 'solid 2px #ddd',
+                            borderRadius: '50%',
+                          }}
+                        >
+                          <BsHandThumbsUp
+                            style={{
+                              width: '26px',
+                              height: '26px',
+                              margin: '0 auto',
+                              color: '#fff',
+                            }}
+                          />
+                        </div>
+                        <div
+                          style={{
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            width: '42px',
+                            height: '42px',
+                            margin: '0 auto',
+                            padding: '0.3rem',
+                            color: '#fff',
+                            border: 'solid 2px #ddd',
+                            borderRadius: '50%',
+                          }}
+                        >
+                          <MdKeyboardArrowDown
+                            style={{
+                              width: '30px',
+                              height: '30px',
+                              margin: '0 auto',
+                              color: '#fff',
+                            }}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </Modal>
                 </div>
               </SwiperSlide>
             );
           })}
         </Swiper>
       </div>
-
-      {active && (
-        <Modal isOpen={active} style={customModalStyles}>
-          <div className={CarouselStyle.modalWrap}>
-            <div className={CarouselStyle.modalImgWrap}>
-              <img
-                className={CarouselStyle.modalImg}
-                src="/images/netflix/carousel/scale_img04.jpg"
-                alt="scale"
-              />
-            </div>
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            >
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '42px',
-                  height: '42px',
-                  margin: '0 auto',
-                  padding: '0.3rem 0.2rem 0.3rem 0.4rem',
-                  color: '#000',
-                  backgroundColor: '#fff',
-                  borderRadius: '50%',
-                }}
-              >
-                <ImPlay3
-                  style={{
-                    width: '30px',
-                    height: '30px',
-                    margin: '0 auto',
-                    color: '#000',
-                  }}
-                />
-              </div>
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '42px',
-                  height: '42px',
-                  margin: '0 auto',
-                  padding: '0.3rem',
-                  border: 'solid 2px #ddd',
-                  borderRadius: '50%',
-                }}
-              >
-                <BsPlusLg
-                  style={{
-                    width: '26px',
-                    height: '26px',
-                    margin: '0 auto',
-                    color: '#fff',
-                  }}
-                />
-              </div>
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '42px',
-                  height: '42px',
-                  margin: '0 auto',
-                  padding: '0.3rem',
-                  border: 'solid 2px #ddd',
-                  borderRadius: '50%',
-                }}
-              >
-                <BsHandThumbsUp
-                  style={{
-                    width: '26px',
-                    height: '26px',
-                    margin: '0 auto',
-                    color: '#fff',
-                  }}
-                />
-              </div>
-              <div
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '42px',
-                  height: '42px',
-                  margin: '0 auto',
-                  padding: '0.3rem',
-                  color: '#fff',
-                  border: 'solid 2px #ddd',
-                  borderRadius: '50%',
-                }}
-              >
-                <MdKeyboardArrowDown
-                  style={{
-                    width: '30px',
-                    height: '30px',
-                    margin: '0 auto',
-                    color: '#fff',
-                  }}
-                />
-              </div>
-            </div>
-          </div>
-          <button onClick={closeModal}>Okay</button>
-        </Modal>
-      )}
     </div>
   );
 };
 
 export default CarouselComponent;
-
-export const customModalStyles = {
-  overlay: { zIndex: 100 },
-};
