@@ -27,8 +27,6 @@ const CarouselComponent = (props: CarouselProp) => {
   const [realIndex, setRealIndex] = useState(0);
   const [mouseEnterIndex, setMouseEnterIndex] = useState(0);
 
-  // const [modalIndex, setModalIndex] = useState(0);
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
   const [active, setActive] = useState(false);
   const [remove, setRemove] = useState(false);
 
@@ -72,18 +70,6 @@ const CarouselComponent = (props: CarouselProp) => {
     }, 1000);
   };
 
-  // const openModal = (id: number) => {
-  //   setModalIndex(id);
-
-  //   if (data.filter((item: CarouselType) => item.id === id).length > 0) {
-  //     setModalIsOpen(true);
-  //   } else setModalIsOpen(false);
-  // };
-
-  // const closeModal = () => {
-  //   setModalIsOpen(false);
-  // };
-
   const customModalStyles: ReactModal.Styles = {
     overlay: {
       backgroundColor: ' rgba(0, 0, 0, 0)',
@@ -91,11 +77,12 @@ const CarouselComponent = (props: CarouselProp) => {
       height: '100%',
       zIndex: '100',
       position: 'fixed',
-      top: '0',
-      left: '0',
+      top: '42%',
+      left: '58%',
     },
     content: {
       width: '30vw',
+      height: '100%',
       zIndex: '100',
       position: 'absolute',
       top: '50%',
@@ -191,7 +178,7 @@ const CarouselComponent = (props: CarouselProp) => {
                   setModalIsOpen(true);
                 }}
                 onMouseLeave={(e: any) => {
-                  setModalIsOpen(false);
+                  // setModalIsOpen(false);
                   // if (Number(e.target.id) === item.id) {
                   //   closeModal();
                   // }
@@ -215,7 +202,7 @@ const CarouselComponent = (props: CarouselProp) => {
                       <div className={CarouselStyle.modalImgWrap}>
                         <img
                           className={CarouselStyle.modalImg}
-                          src="/images/netflix/carousel/scale_img04.jpg"
+                          src={item.imgSrc}
                           alt="scale"
                         />
                       </div>
