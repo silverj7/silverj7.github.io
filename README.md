@@ -1,5 +1,5 @@
 <h1 align="center"> Netflix </h1>
-<div align="center"> 포트폴리오용 넷플릭스 클론코딩입니다 </div>
+<div align="center"> 넷플릭스 클론코딩입니다 </div>
 
 <br>
 <br>
