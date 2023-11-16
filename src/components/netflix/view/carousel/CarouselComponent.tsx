@@ -170,9 +170,7 @@ const CarouselComponent = (props: CarouselProp) => {
                   }, 500);
                 }}
                 onMouseLeave={(e: any) => {
-                  setTimeout(() => {
-                    setModalIsOpen(false);
-                  }, 100);
+                  setModalIsOpen(false);
                 }}
               >
                 <div>

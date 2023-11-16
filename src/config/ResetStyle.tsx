@@ -3,7 +3,6 @@ import { Global, css } from '@emotion/react';
 
 const defaultStyle = css`
   * {
-    height: 100%;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -16,6 +15,10 @@ const defaultStyle = css`
       Roboto,
       Helvetica Neue,
       sans-serif;
+  }
+
+  #gatsby-focus-wrapper {
+    height: 100%;
   }
 
   html,
