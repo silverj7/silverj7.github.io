@@ -27,9 +27,6 @@ const CarouselComponent = (props: CarouselProp) => {
   const [realIndex, setRealIndex] = useState(0);
   const [mouseEnterIndex, setMouseEnterIndex] = useState(0);
 
-  const [active, setActive] = useState(false);
-  const [remove, setRemove] = useState(false);
-
   // modal 좌표
   const [isX, setIsX] = useState(0);
   const [isY, setIsY] = useState(0);
@@ -61,20 +58,9 @@ const CarouselComponent = (props: CarouselProp) => {
     }
   };
 
-  // 마우스이벤트
+  // 이미지 마우스 이벤트 => 좌표값, 넓이값 return
   const onMouseEnter = (index: number) => {
     getPosition(index);
-
-    setTimeout(() => {
-      setActive(true);
-      setRemove(false);
-    }, 1000);
-  };
-
-  const onMouseLeave = () => {
-    setTimeout(() => {
-      setActive(false);
-    }, 1000);
   };
 
   const customModalStyles: ReactModal.Styles = {
@@ -89,6 +75,7 @@ const CarouselComponent = (props: CarouselProp) => {
       zIndex: '100',
       overflow: 'hidden',
     },
+
     content: {
       position: 'relative',
       inset: 0,
@@ -178,10 +165,14 @@ const CarouselComponent = (props: CarouselProp) => {
                   cursor: 'pointer',
                 }}
                 onMouseOver={() => {
-                  setModalIsOpen(true);
+                  setTimeout(() => {
+                    setModalIsOpen(true);
+                  }, 500);
                 }}
                 onMouseLeave={(e: any) => {
-                  setModalIsOpen(false);
+                  setTimeout(() => {
+                    setModalIsOpen(false);
+                  }, 100);
                 }}
               >
                 <div>
@@ -189,7 +180,6 @@ const CarouselComponent = (props: CarouselProp) => {
                     onMouseEnter={() => {
                       onMouseEnter(index), setMouseEnterIndex(index);
                     }}
-                    onMouseLeave={onMouseLeave}
                     ref={(itself: any) => (imgRef.current[index] = itself)}
                     id="modalImg"
                     key={`itemBox` + index}
