@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgatsby_starter_chakra_ui_type_script=self.webpackChunkgatsby_starter_chakra_ui_type_script||[]).push([[609],{3990:function(t,r,a){a.d(r,{bn9:function(){return s}});var e=a(4405);function s(t){return(0,e.w_)({tag:"svg",attr:{version:"1.1",viewBox:"0 0 16 16"},child:[{tag:"path",attr:{d:"M3 2l10 6-10 6z"}}]})(t)}}}]);
+//# sourceMappingURL=31664189-9b22fd2e95b10f43aade.js.map
