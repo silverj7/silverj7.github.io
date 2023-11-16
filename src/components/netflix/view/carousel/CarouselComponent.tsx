@@ -165,9 +165,7 @@ const CarouselComponent = (props: CarouselProp) => {
                   cursor: 'pointer',
                 }}
                 onMouseOver={() => {
-                  setTimeout(() => {
-                    setModalIsOpen(true);
-                  }, 500);
+                  setModalIsOpen(true);
                 }}
                 onMouseLeave={(e: any) => {
                   setModalIsOpen(false);
