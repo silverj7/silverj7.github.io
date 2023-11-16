@@ -46,10 +46,10 @@ const CarouselComponent = (props: CarouselProp) => {
   // 좌표
   const getPosition = (index: number) => {
     if (imgRef.current) {
-      const x = imgRef.current[index].getBoundingClientRect().left;
+      const x = imgRef.current[index].getBoundingClientRect().top;
       setIsX(x);
 
-      const y = imgRef.current[index].getBoundingClientRect().top;
+      const y = imgRef.current[index].getBoundingClientRect().left;
       setIsY(y);
     }
   };
@@ -77,8 +77,8 @@ const CarouselComponent = (props: CarouselProp) => {
       height: '100%',
       zIndex: '100',
       position: 'fixed',
-      top: '42%',
-      left: '58%',
+      top: isX,
+      left: isY,
     },
     content: {
       width: '30vw',
