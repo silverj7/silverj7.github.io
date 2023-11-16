@@ -129,26 +129,168 @@
 }
 
 .modalWrap {
-  background-color: red;
-  position: absolute;
-  overflow: hidden;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  background-color: #222222;
+  position: relative;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  padding: 0;
+  inset: 0;
+  transform: none;
   z-index: 10;
+  overflow: hidden;
 
-  .modalimgwrap {
+  .modalImgWrap {
     position: relative;
     width: 100%;
-    height: 100%;
     padding-top: 56.3925%;
 
     .modalImg {
       position: absolute;
       top: 0;
       left: 0;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
     }
+  }
+}
+
+.modalInner {
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+}
+
+.utilArea {
+  display: flex;
+
+  .btnUtil {
+    overflow: hidden;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    margin-left: 6px;
+    border: 2px solid #b7b7b7;
+    border-radius: 100%;
+    transition: all 0.2s;
+
+    @media (max-width: 768px) {
+      width: 32px;
+      height: 32px;
+    }
+
+    &:hover {
+      border-color: #fff;
+    }
+
+    svg {
+      margin: 0 auto;
+      fill: #fff;
+    }
+
+    &.Play {
+      margin-left: 0;
+      padding-left: 2px;
+      background: #fff;
+      border-color: #fff;
+
+      &:hover {
+        background: #d8d8d8;
+        border-color: #d8d8d8;
+      }
+
+      svg {
+        width: 22px;
+        height: 22px;
+        fill: #222;
+
+        @media (max-width: 768px) {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+    &.Favorite {
+      svg {
+        width: 22px;
+        height: 22px;
+
+        @media (max-width: 768px) {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+    &.Grade {
+      svg {
+        width: 20px;
+        height: 20px;
+
+        @media (max-width: 768px) {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+    &.More {
+      margin-left: auto;
+      svg {
+        width: 24px;
+        height: 24px;
+
+        @media (max-width: 768px) {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+  }
+}
+
+.mediaInfo {
+  margin-top: 20px;
+
+  .title {
+    font-size: 20px;
+    color: #fff;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+}
+
+.currentInfo {
+  display: flex;
+  align-items: center;
+}
+
+.progress {
+  position: relative;
+  width: 40%;
+  height: 2px;
+  background: #ccc;
+
+  &Active {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background: #f00;
+  }
+}
+
+.playInfo {
+  flex: 1;
+  margin-left: 10px;
+  font-size: 16px;
+  color: #fff;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
   }
 }

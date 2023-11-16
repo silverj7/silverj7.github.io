@@ -30,8 +30,12 @@ const CarouselComponent = (props: CarouselProp) => {
   const [active, setActive] = useState(false);
   const [remove, setRemove] = useState(false);
 
+  // modal 좌표
   const [isX, setIsX] = useState(0);
   const [isY, setIsY] = useState(0);
+
+  // modal 넓이
+  const [imgW, setImgW] = useState(0);
 
   useEffect(() => {
     if (!navigationPrevRef.current) return;
@@ -51,6 +55,9 @@ const CarouselComponent = (props: CarouselProp) => {
 
       const y = imgRef.current[index].getBoundingClientRect().left;
       setIsY(y);
+
+      const w = imgRef.current[index].offsetWidth;
+      setImgW(w);
     }
   };
 
@@ -72,27 +79,24 @@ const CarouselComponent = (props: CarouselProp) => {
 
   const customModalStyles: ReactModal.Styles = {
     overlay: {
-      backgroundColor: ' rgba(0, 0, 0, 0)',
-      width: '30vw',
-      height: '100%',
-      zIndex: '100',
-      position: 'fixed',
       top: isX,
       left: isY,
+      width: '100vw',
+      maxWidth: imgW + 80,
+      height: 'auto',
+      background: 'transparent',
+      transform: 'translate(-10%, -10%)',
+      zIndex: '100',
+      overflow: 'hidden',
     },
     content: {
-      width: '30vw',
-      height: '100%',
-      zIndex: '100',
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
+      position: 'relative',
+      inset: 0,
+      padding: 0,
+      background: 'transparent',
+      border: 0,
       borderRadius: '10px',
-      boxShadow: '2px 2px 2px rgba(0, 0, 0, 0.25)',
-      backgroundColor: 'white',
-      justifyContent: 'center',
-      overflow: 'auto',
+      boxShadow: '4px 12px 12px rgba(0, 0, 0, 0.25)',
     },
   };
 
@@ -174,14 +178,10 @@ const CarouselComponent = (props: CarouselProp) => {
                   cursor: 'pointer',
                 }}
                 onMouseOver={() => {
-                  // openModal(item.id);
                   setModalIsOpen(true);
                 }}
                 onMouseLeave={(e: any) => {
-                  // setModalIsOpen(false);
-                  // if (Number(e.target.id) === item.id) {
-                  //   closeModal();
-                  // }
+                  setModalIsOpen(false);
                 }}
               >
                 <div>
@@ -206,102 +206,46 @@ const CarouselComponent = (props: CarouselProp) => {
                           alt="scale"
                         />
                       </div>
-                      <div
-                        style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                        }}
-                      >
-                        <div
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            width: '42px',
-                            height: '42px',
-                            margin: '0 auto',
-                            padding: '0.3rem 0.2rem 0.3rem 0.4rem',
-                            color: '#000',
-                            backgroundColor: '#fff',
-                            borderRadius: '50%',
-                          }}
-                        >
-                          <ImPlay3
-                            style={{
-                              width: '30px',
-                              height: '30px',
-                              margin: '0 auto',
-                              color: '#000',
-                            }}
-                          />
+                      <div className={CarouselStyle.modalInner}>
+                        <div className={CarouselStyle.utilArea}>
+                          <button
+                            className={`${CarouselStyle.btnUtil} ${CarouselStyle.Play}`}
+                          >
+                            <ImPlay3 />
+                          </button>
+                          <button
+                            className={`${CarouselStyle.btnUtil} ${CarouselStyle.Favorite}`}
+                          >
+                            <BsPlusLg />
+                          </button>
+                          <button
+                            className={`${CarouselStyle.btnUtil} ${CarouselStyle.Grade}`}
+                          >
+                            <BsHandThumbsUp />
+                          </button>
+                          <button
+                            className={`${CarouselStyle.btnUtil} ${CarouselStyle.More}`}
+                          >
+                            <MdKeyboardArrowDown />
+                          </button>
                         </div>
-                        <div
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            width: '42px',
-                            height: '42px',
-                            margin: '0 auto',
-                            padding: '0.3rem',
-                            border: 'solid 2px #ddd',
-                            borderRadius: '50%',
-                          }}
-                        >
-                          <BsPlusLg
-                            style={{
-                              width: '26px',
-                              height: '26px',
-                              margin: '0 auto',
-                              color: '#fff',
-                            }}
-                          />
-                        </div>
-                        <div
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            width: '42px',
-                            height: '42px',
-                            margin: '0 auto',
-                            padding: '0.3rem',
-                            border: 'solid 2px #ddd',
-                            borderRadius: '50%',
-                          }}
-                        >
-                          <BsHandThumbsUp
-                            style={{
-                              width: '26px',
-                              height: '26px',
-                              margin: '0 auto',
-                              color: '#fff',
-                            }}
-                          />
-                        </div>
-                        <div
-                          style={{
-                            display: 'inline-flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            width: '42px',
-                            height: '42px',
-                            margin: '0 auto',
-                            padding: '0.3rem',
-                            color: '#fff',
-                            border: 'solid 2px #ddd',
-                            borderRadius: '50%',
-                          }}
-                        >
-                          <MdKeyboardArrowDown
-                            style={{
-                              width: '30px',
-                              height: '30px',
-                              margin: '0 auto',
-                              color: '#fff',
-                            }}
-                          />
+                        <div className={CarouselStyle.mediaInfo}>
+                          <strong className={CarouselStyle.title}>
+                            무인도의 디바
+                          </strong>
+                          <div className={CarouselStyle.currentInfo}>
+                            <div className={CarouselStyle.progress}>
+                              <span
+                                className={CarouselStyle.progressActive}
+                                style={{
+                                  width: '55%',
+                                }}
+                              ></span>
+                            </div>
+                            <span className={CarouselStyle.playInfo}>
+                              총 90분 중 51분
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
